@@ -18,3 +18,37 @@ This is a subset of [setup-ruby's supported versions](https://github.com/ruby/se
 * 2.6
 * 2.5
 * 2.4
+
+## Example
+
+A minimal example has a single job to determine the Ruby version matrix, using this repository.
+Then there should be some task that uses the matrix, but the exact steps likely differ.
+
+```yaml
+jobs:
+  setup_matrix:
+    name: "Determine Ruby versions"
+    runs-on: ubuntu-latest
+    outputs:
+      ruby: ${{ steps.ruby.outputs.versions }}
+    steps:
+      - id: ruby
+        uses: ekohl/ruby-version@v0
+
+  test:
+    name: "Ruby ${{ matrix.ruby }}"
+    runs-on: ubuntu-latest
+    needs: setup_matrix
+    strategy:
+      matrix:
+        ruby: ${{ fromJSON(needs.setup_matrix.outputs.ruby) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run tests
+        run: rake test
+```
