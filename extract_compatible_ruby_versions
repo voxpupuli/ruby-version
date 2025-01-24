@@ -4,6 +4,7 @@ require 'json'
 require 'rubygems'
 
 VERSIONS = [
+  '3.4',
   '3.3',
   '3.2',
   '3.1',
