@@ -34,7 +34,7 @@ jobs:
       ruby: ${{ steps.ruby.outputs.versions }}
     steps:
       - id: ruby
-        uses: voxpupuli/ruby-version@v0
+        uses: voxpupuli/ruby-version@v1
 
   test:
     name: "Ruby ${{ matrix.ruby }}"
