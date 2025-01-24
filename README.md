@@ -33,7 +33,7 @@ jobs:
       ruby: ${{ steps.ruby.outputs.versions }}
     steps:
       - id: ruby
-        uses: ekohl/ruby-version@v0
+        uses: voxpupuli/ruby-version@v0
 
   test:
     name: "Ruby ${{ matrix.ruby }}"
