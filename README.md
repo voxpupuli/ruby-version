@@ -10,6 +10,7 @@ This action reads your gemspec and provides an output of compatible Ruby version
 A static list of compatible versions is maintained.
 This is a subset of [setup-ruby's supported versions](https://github.com/ruby/setup-ruby#supported-versions).
 
+* 3.4
 * 3.3
 * 3.2
 * 3.1
